@@ -1,0 +1,17 @@
+@import "main.css";
+
+:root {
+  --glow: 0;
+}
+
+#hero-section {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  justify-content: center;
+}
+
+#hero-section__avatar {
+  border-radius: 100%;
+  width: min(100%, 10rem);
+}

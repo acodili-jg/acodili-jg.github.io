@@ -1,0 +1,27 @@
+@import "../main.css";
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+  text-align: center;
+  width: min(100%, 80ch);
+}
+
+td {
+  padding: 0.5rem 0.75rem;
+}
+
+#data {
+  border-radius: 0.25rem;
+  height: 15rem;
+  overflow-wrap: normal;
+  overflow-x: scroll;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  white-space: pre;
+  width: min(100%, 80ch);
+}
+
+#my-details tr {
+  border: 1px solid;
+}

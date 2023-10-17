@@ -1,0 +1,249 @@
+@supports(overscroll-behavior-x: contain) {
+  body {
+    overscroll-behavior-x: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --default-theme: light;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --default-theme: dark;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-accent:     hsl(18deg  93% 42%);
+  --color-background: hsl(45deg 100% 96%);
+  --color-primary:    hsl(31deg 100% 50%);
+  --color-secondary:  hsl(45deg 100% 92%);
+  --color-text:       hsl(43deg  90%  4%);
+}
+
+:root[data-theme="dark"] {
+  --color-accent:     hsl(18deg  93% 58%);
+  --color-background: hsl(45deg 100%  4%);
+  --color-primary:    hsl(31deg 100% 50%);
+  --color-secondary:  hsl(45deg 100%  8%);
+  --color-text:       hsl(43deg  90% 96%);
+}
+
+:root {
+  --function-back-in: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --glow: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding-bottom: 0.75rem;
+}
+
+main {
+  gap: 2.5rem;
+  margin: 2rem;
+}
+
+ol.hbox,
+ol.vbox,
+ul.hbox,
+ul.vbox {
+  list-style-type: none;
+}
+
+p {
+  padding-bottom: 0.75rem;
+  width: min(100%, 80ch);
+}
+
+section.decorated,
+.decorated > section {
+  --opacity: 0.1;
+  width: min(100ch, calc(100% - 3rem));
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+section.decorated::after,
+.decorated > section::after {
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.5rem 0;
+  opacity: var(--opacity);
+  transition: opacity 500ms;
+}
+
+section.decorated:hover,
+.decorated > section:hover {
+  --opacity: 0.6;
+}
+
+section.decorated p,
+.decorated > section p {
+  text-indent: 2.5rem;
+}
+
+.alike-text, body, button {
+  color: var(--color-text);
+}
+
+.bottom-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.carved-after::after,
+button::after,
+section.decorated::after,
+.decorated > section::after {
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.flex,
+.center-items,
+.decorated > section,
+section.decorated,
+.hbox,
+.vbox {
+  display: flex;
+}
+
+.glow {
+  --glow: 1;
+}
+
+.grid {
+  display: grid;
+}
+
+.hbox {
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.justified,
+p {
+  text-align: justify;
+}
+
+.no-appearance {
+  appearance: none;
+}
+
+.no-gap {
+  gap: 0;
+}
+
+.solid,
+body, 
+button,
+section.decorated,
+.decorated > section {
+  background-color: var(--color-background);
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.vbox,
+section.decorated,
+.decorated > section {
+  align-items: center;
+  flex-direction: column;
+}
+
+.tx-centered {
+  text-align: center;
+}
+
+.tx-demibold {
+  font-weight: 600;
+}
+
+.tx-semi-bold {
+  font-weight: 650;
+}
+
+.tx-shout {
+  text-transform: uppercase;
+}
+
+.flex.will-wrap {
+  flex-wrap: wrap;
+}
+
+#brand-name {
+  opacity: calc(0.8 * var(--glow, 0.0) + 0.2);
+  transition: opacity 600ms var(--function-back-in);
+}
+
+#main-header {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+#main-header::after {
+  box-shadow: 0 -0.25rem 1rem 0;
+  opacity: calc(0.8 * var(--glow, 0.0) + 0.2);
+  transition: opacity 500ms;
+}
+
+#theme-selection:has(:focus-visible) {
+  outline: 0.0625rem solid;
+  outline-offset: 0.25rem;
+  border-radius: 0.015625rem;
+}
+
+#theme-selection {
+  gap: 0;
+  padding-top: 0.25rem;
+  gap: 0.5rem;
+}
+
+#theme-selection > .theme-option {
+  transition: opacity 200ms;
+}
+
+#theme-selection:not(:hover):not(:has(:focus-visible)) > .theme-option:not(:has(input:not(:checked))) {
+  opacity: 0;
+}
+
+#theme-selection > .theme-option:has(input:checked) {
+  opacity: 40%;
+}
+
+#theme-selection > .theme-option > input {
+  height: 0.8rem;
+  width: 0.8rem;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  box-shadow: var(--color-text) 0 0 0.5rem 0;
+  display: absolute;
+}
+
+#theme-selection > .theme-option > input:checked {
+  background-color: transparent;
+}
+
+#theme-selection > .theme-option > label {
+  font-size: 0.625rem;
+}
