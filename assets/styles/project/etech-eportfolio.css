@@ -1,29 +1,21 @@
 @import "../main.css";
 
 table {
-  border: 1px solid;
   border-collapse: collapse;
   text-align: center;
   width: min(100%, 80ch);
 }
 
 td {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1.5rem;
 }
 
 #data {
   border-radius: 0.25rem;
   height: 15rem;
-  overflow-wrap: normal;
-  overflow-x: scroll;
   margin-bottom: 2rem;
   margin-top: 0.5rem;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  white-space: pre;
+  padding: 0.5rem;
+  padding-right: initial;
   width: min(100%, 80ch);
-}
-
-#my-details tr {
-  border: 1px solid;
 }

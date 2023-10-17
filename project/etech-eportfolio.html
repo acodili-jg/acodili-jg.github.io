@@ -51,13 +51,13 @@
   <main class="decorated vbox">
     <section id="important-section">
       <h2 id="important-heading">Important</h2>
-      <p>
+      <p id="important-paragraph">
         Due to privacy concerns, the supposed data in this page is stripped (including
         <abbr title="Hyper Text Markup Language">HTML</abbr>
         element IDs). Those who have received said data, or a part of it, should input it to the
         following text area.
       </p>
-      <textarea id="data">{
+      <textarea id="data" title="Data input" cols="80" wrap="soft">{
     "another-note-paragraph": "It's certainly possible to accidentally overwrite this page's default contents through the previously mentioned text area. In such scenarios, the refresh button or action, that is usually present in most web browsers, is your friend."
 }
 </textarea>
@@ -72,7 +72,9 @@
 
     <section id="my-details-section">
       <h2 id="my-details-heading" class="tx-centered">My Personal Information</h2>
-      <p id="my-details-paragraph"></p>
+      <p id="my-background-paragraph"></p>
+      <p id="my-favorites-paragraph"></p>
+      <h3 id="my-details-summary-heading">Summary</h3>
       <table id="my-details">
         <tr id="my-full-name-row">
           <td id="my-full-name-label">Full Name</td>
