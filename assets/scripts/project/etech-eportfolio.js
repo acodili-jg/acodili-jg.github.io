@@ -30,7 +30,7 @@ data.addEventListener("input", (event) => {
     if (!element) continue;
     element.textContent = "";
 
-    var pattern = /(?<crlf>\n\r?|\r)|(?<date>\d{4}(?<month>-\d{2}(?<day>-\d{2})?)?)|(?<abbr>\([^(|)]+\|[^(|)]+\))|(?<text>.+?(?=(?:\n\r?|\r)|(?:\d{4}(?:-\d{2}){0,2})|(?:\([^(|)]+\|[^(|)]+\))|$))/gy;
+    var pattern = /(?<crlf>\n\r?|\r)|(?<date>\d{4}(?<month>-\d{2}(?<day>-\d{2})?)?)|(?<abbr>\((?:[^(|)]*\|)?[^(|)]+\))|(?<text>.+?(?=(?:\n\r?|\r)|(?:\d{4}(?:-\d{2}){0,2})|(?:\((?:[^(|)]*\|)?[^(|)]+\))|$))/gy;
     for (var match; (match = pattern.exec(text)) !== null; ) {
 
       var value = match[0];
@@ -56,13 +56,18 @@ data.addEventListener("input", (event) => {
           break;
         case MatchType.ABBR:
           value = value.slice(1, -1);
-          var [title, abbr] = value.split("|");
+          var tokens = value.split("|")
           var abbrElement = document.createElement("abbr");
-          // Minimize interpolation
-          if (title) {
-            abbrElement.setAttribute("title", title);
-            abbrElement.textContent = abbr;
-            element.appendChild(abbrElement);
+
+          if (tokens.length == 2) {
+            var [title, abbr] = tokens;
+            if (title) {
+              abbrElement.setAttribute("title", title);
+              abbrElement.textContent = abbr;
+              element.appendChild(abbrElement);
+            } else {
+              element.appendChild(document.createTextNode(`(${abbr})`))
+            }
           } else {
             element.appendChild(document.createTextNode("("))
             abbrElement.textContent = value;
