@@ -19,10 +19,15 @@ const MatchType = Object.freeze({
 
 var data = document.getElementById("data");
 data.addEventListener("input", (event) => {
-  var actualData = JSON.parse(data.value);
+  try {
+    var actualData = JSON.parse(data.value);
+  } catch (ignored) {
+    return;
+  }
 
   for (const [id, text] of Object.entries(actualData)) {
     var element = document.getElementById(id);
+    if (!element) continue;
     element.textContent = "";
 
     var pattern = /(?<crlf>\n\r?|\r)|(?<date>\d{4}(?<month>-\d{2}(?<day>-\d{2})?)?)|(?<abbr>\([^(|)]+\|[^(|)]+\))|(?<text>.+?(?=(?:\n\r?|\r)|(?:\d{4}(?:-\d{2}){0,2})|(?:\([^(|)]+\|[^(|)]+\))|$))/gy;

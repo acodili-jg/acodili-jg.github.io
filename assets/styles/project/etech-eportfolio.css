@@ -16,6 +16,8 @@ td {
   height: 15rem;
   overflow-wrap: normal;
   overflow-x: scroll;
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
   padding-left: 0.5rem;
   padding-top: 0.5rem;
   white-space: pre;
