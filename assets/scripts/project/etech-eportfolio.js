@@ -16,8 +16,6 @@ const MatchType = Object.freeze({
   ABBR: 5,
   TEXT: 6,
 });
-var data = document.getElementById("data");
-var dataFile = document.getElementById("data-file");
 
 function updateTextContentsOf(element, text) {
   element.textContent = "";
@@ -74,9 +72,10 @@ function updateTextContentsOf(element, text) {
   }
 }
 
-function updatePageContents(text) {
+var data = document.getElementById("data");
+data.addEventListener("input", (event) => {
   try {
-    var actualData = JSON.parse(text);
+    var actualData = JSON.parse(data.value);
   } catch (ignored) {
     return;
   }
@@ -93,15 +92,4 @@ function updatePageContents(text) {
         break;
     }
   }
-}
-
-dataFile.addEventListener("change", (event) => {
-  if (!dataFile.files?.[0]) return;
-  const reader = new FileReader();
-  reader.onload = (event) => updatePageContents(data.value = event.target.result);
-  reader.readAsText(dataFile.files[0]);
-});
-
-data.addEventListener("input", (event) => {
-  updatePageContents(event.target.value);
 });

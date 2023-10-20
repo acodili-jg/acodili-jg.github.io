@@ -48,12 +48,11 @@ body, button {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 0.75rem;
-  margin-top: 1.5rem;
+  padding-bottom: 0.75rem;
 }
 
 main {
-  /* gap: 2.5rem; */
+  gap: 2.5rem;
   margin: 2rem;
 }
 
@@ -66,7 +65,33 @@ ul.vbox {
 
 p {
   padding-bottom: 0.75rem;
-  max-width: 80ch;
+  width: min(100%, 80ch);
+}
+
+section.decorated,
+.decorated > section {
+  --opacity: 0.1;
+  width: min(100ch, calc(100% - 3rem));
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+section.decorated::after,
+.decorated > section::after {
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.5rem 0;
+  opacity: var(--opacity);
+  transition: opacity 500ms;
+}
+
+section.decorated:hover,
+.decorated > section:hover {
+  --opacity: 0.6;
+}
+
+section.decorated p,
+.decorated > section p {
+  text-indent: 2.5rem;
 }
 
 .alike-text, body, button {
@@ -79,7 +104,9 @@ p {
 }
 
 .carved-after::after,
-button::after {
+button::after,
+section.decorated::after,
+.decorated > section::after {
   content: '';
   inset: 0;
   pointer-events: none;
@@ -88,6 +115,8 @@ button::after {
 
 .flex,
 .center-items,
+.decorated > section,
+section.decorated,
 .hbox,
 .vbox {
   display: flex;
@@ -121,7 +150,9 @@ p {
 
 .solid,
 body, 
-button {
+button,
+section.decorated,
+.decorated > section {
   background-color: var(--color-background);
 }
 
@@ -129,7 +160,9 @@ button {
   justify-content: space-between;
 }
 
-.vbox {
+.vbox,
+section.decorated,
+.decorated > section {
   align-items: center;
   flex-direction: column;
 }
@@ -142,10 +175,6 @@ button {
   font-weight: 600;
 }
 
-.tx-indent p {
-  text-indent: 2.5rem;
-}
-
 .tx-semi-bold {
   font-weight: 650;
 }
@@ -154,12 +183,8 @@ button {
   text-transform: uppercase;
 }
 
-.will-wrap.flex {
+.flex.will-wrap {
   flex-wrap: wrap;
-}
-.will-wrap.hbox {
-  align-items: flex-start;
-  /* flex-flow: column; */
 }
 
 #brand-name {
@@ -173,6 +198,7 @@ button {
   padding: 1rem;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 #main-header::after {
@@ -188,8 +214,9 @@ button {
 }
 
 #theme-selection {
-  gap: 0.5rem;
+  gap: 0;
   padding-top: 0.25rem;
+  gap: 0.5rem;
 }
 
 #theme-selection > .theme-option {

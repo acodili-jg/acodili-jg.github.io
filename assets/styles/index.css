@@ -13,6 +13,5 @@
 
 #hero-section__avatar {
   border-radius: 100%;
-  /* width: min(100%, 10rem); */
-  max-width: 10rem;
+  width: min(100%, 10rem);
 }
