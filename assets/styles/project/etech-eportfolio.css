@@ -10,7 +10,8 @@ img {
 table {
   border-collapse: collapse;
   text-align: center;
-  width: min(100%, 80ch);
+  /* width: min(100%, 80ch); */
+  max-width: 80ch;
 }
 
 td {
@@ -20,9 +21,24 @@ td {
 #data {
   border-radius: 0.25rem;
   height: 15rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.25rem;
   margin-top: 0.5rem;
   padding: 0.5rem;
   padding-right: initial;
   width: min(100%, 80ch);
+  /* max-width: 80ch; */
+}
+
+#data-file {
+  margin-bottom: 2rem;
+}
+
+#my-shs-friends {
+  align-content: flex-start;
+  max-width: 80ch;
+  flex-wrap: wrap;
+}
+
+#my-shs-friends li {
+  flex: 1 1 25ch;
 }
