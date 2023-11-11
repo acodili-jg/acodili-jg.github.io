@@ -17,8 +17,11 @@
    container: menu-bar / inline-size;
    display: flex;
    gap: 1rem;
-   justify-content: space-between;
    overflow: hidden;
+}
+
+.menu-bar > :first-child {
+   flex-grow: 1;
 }
 
 .menu-list {
@@ -56,37 +59,16 @@
 
 .menus {
    display: flex;
-   /* transition: 250ms flex-grow; */
+   overflow-x: auto;
 }
 
-@container menu-bar (max-width: 600px) {
-   .menu-bar:not(:has(.menu-toggle:checked)) .menu:not(:first-child) {
+@container menu-bar (max-width: 599.9px) {
+   .menu-bar:not(:has(.menu-toggle:checked)) .menu {
       display: none;
    }
 
    .menu-bar:has(.menu-toggle:checked) > :first-child {
-      display: none;
-   }
-
-   .menu-bar:has(.menu-toggle:checked) > .menus {
-      flex-grow: 1;
-      transition: 250ms flex-grow cubic-bezier(0.87, 0, 0.13, 1);
-   }
-
-   .menu-bar:has(.menu-toggle:checked) > .menus,
-   .menu-bar:has(.menu-toggle:checked) .menu {
-      justify-content: center;
-   }
-
-   .menu-bar:has(.menu-toggle:checked) .menu-toggle {
-      height: 3rem;
-      position: absolute;
-      right: 0;
-   }
-
-   .menu-bar:has(.menu-toggle:checked) .menu-list {
-      flex-direction: column;
-      padding: 2rem 0;
+      /* display: none; */
    }
 }
 
