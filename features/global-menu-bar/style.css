@@ -1,0 +1,30 @@
+.menu-bar {
+   display: flex;
+   gap: 1rem;
+   justify-content: space-between;
+   /* padding: 1rem; */
+   box-shadow: 0 -0.75rem 1rem 0;
+}
+
+.menu-list {
+   display: flex;
+   text-transform: uppercase;
+}
+
+.expand {
+   padding: 1rem 1rem;
+}
+
+.menu {
+   display: flex;
+   transition: 1s background-color cubic-bezier(0.16, 1, 0.3, 1), 250ms color;
+}
+
+.menu:hover {
+   background-color: var(--color-secondary);
+}
+
+.menu:active {
+   background-color: var(--color-primary);
+   color: var(--color-text-contrast);
+}
