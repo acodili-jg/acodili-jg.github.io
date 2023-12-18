@@ -1,0 +1,255 @@
+/******************************************************************************/
+/* http://meyerweb.com/eric/tools/css/reset/                                  */
+/* v2.0 | 20110126                                                            */
+/* License: none (public domain)                                              */
+/******************************************************************************/
+
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 1em 0 0 0;
+    padding: 0
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/******************************************************************************/
+/* acodili-jg's                                                               */
+/* License: none                                                              */
+/******************************************************************************/
+
+:root {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji";
+}
+
+body {
+    display: grid;
+    grid-template-columns: 
+        [full-start]
+        minmax(0, 1fr)
+        [breakout-start]
+        2rem
+        [content-start]
+        minmax(0, 80ch)
+        [content-end]
+        2rem
+        [breakout-end]
+        minmax(0, 1fr)
+        [full-end];
+}
+
+section {
+    &:first-child {
+        padding-top: unset;
+    }
+
+    padding: 2rem;
+}
+
+/* Layout */
+
+.breakout {
+    grid-column: breakout;
+}
+
+.content {
+    grid-column: content;
+}
+
+.flex {
+    display: flex;
+}
+
+.full {
+    grid-column: full;
+}
+
+.subgrid {
+    display: grid;
+    grid-template-columns: subgrid;
+}
+
+/* Color */
+
+.fg-fg {
+    color: var(--fg);
+}
+
+/* Typography */
+
+.tx-centered {
+  text-align: center;
+}
+
+.tx-demibold {
+  font-weight: 600;
+}
+
+.tx-indent p {
+  text-indent: 2.5rem;
+}
+
+.tx-justified {
+    text-align: justify;
+}
+
+.tx-semi-bold {
+  font-weight: 650;
+}
+
+.tx-shout {
+  text-transform: uppercase;
+}
+
+/* Navigation */
+
+#main-header {
+    background-color: var(--bg);
+    box-shadow: 0 -0.5rem 1rem 0;
+    position: sticky;
+    top: 0;
+}
+
+#main-header-items {
+    > * {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+#hamburger-model {
+    display: none;
+    margin: 0;
+}
+
+#hamburger {
+    display: none;
+    padding: 1rem;
+}
+
+#header-brand {
+    text-align: center;
+    /* fix overlap with #main-nav */
+    z-index: 1;
+}
+
+#main-nav {
+    & a {
+        color: var(--fg);
+    }
+
+    grid-column-end: -1;
+    justify-content: center;
+}
+
+#menu-list {
+    justify-content: center;
+}
+
+nav {
+    & ul {
+        list-style-type: none;
+        margin-block-start: var(--emsp);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #hamburger-model {
+        display: unset;
+        appearance: none;
+    }
+
+    #hamburger {
+        display: unset;
+        z-index: 2;
+    }
+
+    #header-brand {
+        grid-column-end: -1;
+    }
+
+    #main-header-items:not(:has(#hamburger-model:checked)) #main-nav {
+        translate: -100% 0;
+        visibility: collapse;
+    }
+
+    #main-nav {
+        background-color: var(--bg);
+        box-shadow: inset 0px 0px 1rem -0.5rem;
+        height: 100svh;
+        inset: 0;
+        margin-top: 3rem;;
+        position: absolute;
+        transition: translate visibility 650ms;
+        translate: 0 0;
+    }
+
+    #menu-list {
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: unset;
+    }
+}
+
+/* Miscellaneous */
+
+.empad {
+    padding: var(--emsp);
+}

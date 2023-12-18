@@ -1,0 +1,44 @@
+<!-- script>
+    var default_theme = "light";
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+        default_theme = "dark";
+
+    var theme;
+    try {
+        theme = localStorage.getItem("acodili-jg/theme");
+        if (theme.startsWith('"') && theme.endsWith('"')) {
+            theme = theme.slice(1, theme.length - 1);
+            localStorage.setItem("acodili-jg/theme", theme);
+        }
+    } catch (e) { }
+    if (theme === null || theme === undefined)
+        theme = default_theme;
+
+    var html = document.querySelector('html');
+    html.classList.remove('no-js')
+    html.classList.remove('light')
+    html.classList.add(theme);
+    html.classList.add('js');
+</script -->
+
+<header id="main-header" class="full subgrid">
+    <div id="main-header-items" class="breakout">
+        <input id="hamburger-model" type="checkbox">
+        <label id="hamburger" for="hamburger-model">&#9776;</label>
+        <span id="header-brand" class="empad tx-demibold">acodili-jg</span>
+        <nav id="main-nav" class="flex tx-semi-bold tx-shout">
+            <ul id="menu-list" class="flex">
+                <li>
+                    <a href="/{{version}}/index.html" class="empad fg-fg">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/{{version}}/projects.html" class="empad fg-fg">
+                        Projects
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

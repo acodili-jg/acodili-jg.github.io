@@ -1,0 +1,12 @@
+{% macro header(version) %}
+    <header class="flex">
+        <span class="tx-semi-bold">acodili-jg</span>
+        <nav class="flex">
+            <ul class="flex tx-demibold tx-shout">
+                <a href="/{{version}}/index.html"><li>Home</li></a>
+                <a href="/{{version}}/projects.html"><li>Projects</li></a>
+            </ul>
+        </nav>
+        <span class="tx-semi-bold">hamburger!</span>
+    </header>
+{% endmacro header %}

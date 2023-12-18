@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main-header {
+            background-color: #1e1e2b;
+            color: #efefef;
+            display: grid;
+            grid-template-columns: auto 1fr;
+        }
+
+        #menu-nav {
+            grid-column: 1 / -1;
+        }
+
+        .empad {
+            padding: 1rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .hamburger, #menu-brand {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .ifg {
+            color: inherit;
+        }
+
+        .no-bullet {
+            list-style-type: none;
+        }
+
+        .removed {
+            display: none;
+        }
+
+        .shout {
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: unset;
+                z-index: 2;
+            }
+
+            #menu-brand {
+                grid-column: 1 / -1;
+                grid-row: 1;
+                text-align: center;
+                z-index: 1;
+            }
+
+            #main-nav {
+                background: inherit;
+                inset: 0;
+                position: absolute;
+            }
+
+            #menu-toggle:not(:checked) + label + span + nav {
+                display: none;
+            }
+
+            #main-menu {
+                align-items: center;
+                flex-direction: column;
+                flex-grow: 1;
+                gap: 2rem;
+                /* justify-content: center; */
+                padding: 4rem 1rem;
+                margin: 0;
+            }
+        }
+    </style>
+    </head>
+<body>
+    <header id="main-header" class="flex">
+        <input id="menu-toggle" type="checkbox" class="hamburger-button removed">
+        <label for="menu-toggle" class="empad hamburger removed">&#9776;</label>
+        <span id="menu-brand" class="empad">brand</span>
+        <nav id="main-nav" class="shout">
+            <ul id="main-menu" class="flex no-bullet">
+                <li><a href="#" class="empad ifg">Item 1</a></li>
+                <li><a href="#" class="empad ifg">Item 2</a></li>
+                <!-- Add more items as needed -->
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

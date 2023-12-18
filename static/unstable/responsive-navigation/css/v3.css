@@ -1,0 +1,114 @@
+:root {
+    --color-primary: #141437;
+    --color-primary-alt: #252540;
+    --color-primary-hover: #33406c;
+    --color-text-contrast: #e5e5ff;
+    --duration-background: 300ms;
+    --duration-menu: 650ms;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#main-header {
+    background-color: var(--color-primary);
+    box-shadow: 0 -0.5rem 1rem 0;
+    color: var(--color-text-contrast);
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+#hamburger, #hamburger-model {
+    grid-column: 1;
+    grid-row: 1;
+    display: none;
+    z-index: 1;
+}
+
+#hamburger {
+    padding: 1rem;
+    transition: background-color var(--duration-background);
+}
+
+#header-brand {
+    background-color: inherit;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: 1rem;
+}
+
+#menu-nav {
+    & a {
+        color: inherit;
+        padding: 1rem;
+    }
+
+    grid-column: 1 / -1;
+    grid-row: 1;
+    text-transform: uppercase;
+}
+
+#menu-list {
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: initial 0 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    #hamburger {
+        display: unset;
+        z-index: 2;
+    }
+
+    #header-brand {
+        text-align: center;
+        z-index: 1;
+    }
+
+    #main-header {
+        &:has(#hamburger-model:checked) {
+            & #hamburger {
+                &:hover {
+                    background-color: var(--color-primary-hover);
+                }
+
+                background-color: var(--color-primary-alt);
+            }
+
+            & #menu-nav {
+                translate: 0 0;
+            }
+        }
+    
+        &:not(:has(#hamburger-model:checked)) #menu-nav {
+            visibility: collapse;
+        }
+    }
+
+    #menu-nav {
+        background-color: var(--color-primary-alt);
+        inset: 0;
+        padding-top: 4rem;
+        position: absolute;
+        transition-duration: var(--duration-menu);
+        transition-property: translate, visibility;
+        translate: -100% 0;
+    }
+
+    #menu-list {
+        flex-direction: column;
+        gap: 2rem
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.hover:hover {
+    background-color: var(--color-primary-hover);
+}
